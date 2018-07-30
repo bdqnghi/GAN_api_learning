@@ -17,7 +17,7 @@ For more details on these approaches, please check [here](https://arxiv.org/pdf/
 ### The unsupervised way: adversarial training and refinement (CPU|GPU)
 To learn a mapping using adversarial training and iterative Procrustes refinement, run:
 ```bash
-python unsupervised.py --src_lang en --tgt_lang es --src_emb data/wiki.en.vec --tgt_emb data/wiki.es.vec --n_refinement 5
+python3 unsupervised.py --src_lang java --tgt_lang cs --src_emb data/java_vectors_sdk_functions_api_tokens_with_keywords_50_15.txt --tgt_emb data/cs_vectors_sdk_functions_api_tokens_with_keywords_50_15.txt --n_refinement 50 --emb_dim 50 --max_vocab 300000 --epoch_size 100000 --n_epochs 1
 ```
 By default, the validation metric is the mean cosine of word pairs from a synthetic dictionary built with CSLS (Cross-domain similarity local scaling).
 
