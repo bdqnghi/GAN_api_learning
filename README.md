@@ -19,6 +19,11 @@ A sample command to learn a mapping using adversarial training and iterative Pro
 ```bash
 python3 unsupervised.py --src_lang java --tgt_lang cs --src_emb data/java_vectors_sdk_functions_api_tokens_with_keywords_50_15.txt --tgt_emb data/cs_vectors_sdk_functions_api_tokens_with_keywords_50_15.txt --n_refinement 2 --emb_dim 50 --max_vocab 300000 --epoch_size 100000 --n_epochs 1 --identical_dict_path "dict/candidates_dict.txt" --dico_eval "eval/java-cs.txt"
 ```
+### Evaluate cross-lingual embeddings (CPU|GPU)
+
+```bash
+python evaluate.py --src_lang java --tgt_lang cs --src_emb dumped/debug/some_id/vectors-java.txt --tgt_emb dumped/debug/some_id/vectors-cs.txt --dico_eval "eval/java-cs.txt" --max_vocab 200000
+```
 ### Some explanations and tips:
 * **n_epochs**: number of epoch, usually up to 5 is good enough.
 * **epoch_size**: size of the epoch to run over the training data once, for large vocabulary(e.g 100.000 words), should be around 500.000-1.000.000. Current default is 100.000
@@ -27,12 +32,4 @@ python3 unsupervised.py --src_lang java --tgt_lang cs --src_emb data/java_vector
 * **identical_dict_path**: path to the synthetic dictionary. Since we're based on class and method name to induce a synthetic dictionary for the refinement, it need to be precalculated and store to somewhere first, otherwise the computation will be slow if the size of the 2 input embeddings is large.
 * **dico_eval**: path to the evaluation dictionary
 * If the discriminator loss reaches 0.35, it's a good sign that the model converges, more training may not affect much.
-
-
-### Evaluate cross-lingual embeddings (CPU|GPU)
-
-**Cross-lingual**
-```bash
-python evaluate.py --src_lang java --tgt_lang cs --src_emb data/java_vectors_sdk_functions_api_tokens_with_keywords_50_15.txt --tgt_emb data/cs_vectors_sdk_functions_api_tokens_with_keywords_50_15.txt --dico_eval "eval/java-cs.txt" --max_vocab 200000
-```
-
+* After the training step, a new folder is generated under "dumped/debug" with a unique ID each time a script is running, new embeddings are writtent in there.
