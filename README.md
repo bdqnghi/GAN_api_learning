@@ -1,5 +1,5 @@
 ## Domain Adaptation for Cross Language API Learning 
-![Model](https://s3.amazonaws.com/arrival/outline_all.png)
+![Model](figs/self_refinement.png)
 
 ## Dependencies
 * Python 2/3 with [NumPy](http://www.numpy.org/)/[SciPy](https://www.scipy.org/)
