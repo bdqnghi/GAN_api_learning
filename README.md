@@ -26,7 +26,7 @@ python3 unsupervised.py --src_lang java --tgt_lang cs --src_emb data/java_vector
 * **emb_dim**: size of the input embeddings, now default is 50, 50 is also the recommended size to get a good performance. 
 * **identical_dict_path**: path to the synthetic dictionary. Since we're based on class and method name to induce a synthetic dictionary for the refinement, it need to be precalculated and store to somewhere first, otherwise the computation will be slow if the size of the 2 input embeddings is large.
 * **dico_eval**: path to the evaluation dictionary
-* If the discriminator loss reach 0.35, it's a good sign that the model converges, more training may not affect much.
+* If the discriminator loss reaches 0.35, it's a good sign that the model converges, more training may not affect much.
 
 
 ### Evaluate cross-lingual embeddings (CPU|GPU)
