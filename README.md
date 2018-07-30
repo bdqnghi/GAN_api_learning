@@ -10,7 +10,7 @@ Available on CPU or GPU, in Python 2 or 3. Faiss is *optional* for GPU users - t
 
 ## Align monolingual word embeddings
 
-* **Unsupervised**: without any parallel data or anchor point, learn a mapping from the source to the target space using adversarial training and (iterative) Procrustes refinement.
+* **Unsupervised**: learn a mapping from the source to the target space using adversarial training and (iterative) Procrustes refinement.
 
 For more details on these approaches, please check [here](https://arxiv.org/pdf/1710.04087.pdf).
 
@@ -26,13 +26,13 @@ python3 unsupervised.py --src_lang java --tgt_lang cs --src_emb data/java_vector
 * **emb_dim**: size of the input embeddings, now default is 50
 * **identical_dict_path**: path to the synthetic dictionary. Since we're based on class and method name to induce a synthetic dictionary for the refinement, it need to be precalculated and store to somewhere first, otherwise the computation will be slow if the size of the 2 input embeddings is large.
 * **dico_eval**: path to the evaluation dictionary
-* If the discriminator loss reach 0.35, it's a good sign that the model converges, more training will not affect much.
+* If the discriminator loss reach 0.35, it's a good sign that the model converges, more training may not affect much.
 
 
 ### Evaluate cross-lingual embeddings (CPU|GPU)
 
 **Cross-lingual**
 ```bash
-python evaluate.py --src_lang en --tgt_lang es --src_emb data/wiki.en-es.en.vec --tgt_emb data/wiki.en-es.es.vec --max_vocab 200000
+python evaluate.py --src_lang java --tgt_lang cs --src_emb data/java_vectors_sdk_functions_api_tokens_with_keywords_50_15.txt --tgt_emb data/cs_vectors_sdk_functions_api_tokens_with_keywords_50_15.txt --dico_eval "eval/java-cs.txt" --max_vocab 200000
 ```
 
